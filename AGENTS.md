@@ -1,5 +1,6 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Brightwheel Front Desk — Agent Notes
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+- Next.js **15** (App Router), React 19, Tailwind v4.
+- Keep modules small and testable: one responsibility per file, I/O (DB/LLM/env) behind injectable adapters. No monolithic `*.ts` files.
+- Tests are colocated: `foo.ts` + `foo.test.ts` in the same directory. Vitest runs them.
+- See `docs/PROJECT_PLAN.md` for scope and `docs/SETUP.md` for external-service setup.
