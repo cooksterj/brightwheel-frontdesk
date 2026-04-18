@@ -10,6 +10,15 @@ describe("landing page", () => {
     expect(screen.getByText(/gentle/i)).toBeInTheDocument();
   });
 
+  it("surfaces chat CTAs in multiple places, all pointing at /chat", () => {
+    render(<Home />);
+    const ctas = screen.getAllByRole("link", { name: /ask us anything/i });
+    expect(ctas.length).toBeGreaterThanOrEqual(2);
+    for (const cta of ctas) {
+      expect(cta).toHaveAttribute("href", "/chat");
+    }
+  });
+
   it("does not leak tuition figures", () => {
     render(<Home />);
     const body = document.body.textContent ?? "";

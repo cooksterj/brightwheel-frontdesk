@@ -5,6 +5,8 @@ import type { Message } from "@/lib/chat/types";
 import { getPublicEnv, getServerEnv } from "@/lib/env";
 import { streamAnswer } from "@/lib/rag/answer";
 import { retrieveSections } from "@/lib/rag/retrieve";
+import { validateMessageLimits } from "@/lib/security/limits";
+import { isAllowedOrigin } from "@/lib/security/origin";
 import { embed } from "@/lib/voyage/embed";
 
 export const runtime = "nodejs";
@@ -22,6 +24,16 @@ function jsonError(message: string, status = 400): Response {
 }
 
 export async function POST(req: NextRequest) {
+  // 1. Origin allowlist — blocks drive-by cross-site POSTs and naïve curl abuse.
+  const origin = req.headers.get("origin");
+  if (
+    !isAllowedOrigin(origin, {
+      allowAll: process.env.NODE_ENV === "development",
+    })
+  ) {
+    return jsonError("forbidden", 403);
+  }
+
   let body: RequestBody;
   try {
     body = (await req.json()) as RequestBody;
@@ -32,6 +44,14 @@ export async function POST(req: NextRequest) {
   if (!Array.isArray(body.messages) || body.messages.length === 0) {
     return jsonError("messages is required");
   }
+
+  // 2. Size caps — kills the "stuff a giant prompt" attack before we pay
+  //    Voyage or Anthropic for it.
+  const violation = validateMessageLimits(body.messages);
+  if (violation) {
+    return jsonError(violation.reason, 413);
+  }
+
   const lastUser = [...body.messages].reverse().find((m) => m.role === "user");
   if (!lastUser || !lastUser.content.trim()) {
     return jsonError("no user message to answer");

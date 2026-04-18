@@ -16,10 +16,10 @@ Not trying to handle every question. Trying to handle a realistic set *extremely
 
 Two surfaces, shipped together:
 
-### 1. Public — "The Slow Cooker" demo site (`/`)
-A real-feeling marketing site for a fictional daycare. Hero, programs, tuition, tour CTA, testimonials, contact.
+### 1. Public — "The Slow Cooker" demo site (`/` + `/chat`)
+A real-feeling marketing site for a fictional daycare. Deliberately fact-free (no hours, tuition, policies, address) — any factual question about the center must go through the chat. This is the product thesis made visible in negative space.
 
-**Floating chat bubble bottom-right** (Intercom/Drift pattern) expands into a polished chat panel. This is where the parent experience lives. The widget is branded "Powered by Brightwheel" — subtle but intentional: this is the product pitch.
+**Chat lives at `/chat`** (originally planned as a floating bubble, pivoted to a dedicated route): a Navbar link points there, the page is a full-height chat UI. Every response is RAG-grounded with inline `[§ Section Title]` citations so the trust story is verifiable.
 
 ### 2. Operator dashboard (`/admin`)
 Where center staff manage the source of truth and see what parents are asking.
@@ -45,22 +45,23 @@ Where center staff manage the source of truth and see what parents are asking.
 
 ## Scope
 
-### Parent chat widget
-- [ ] Floating bubble → expanding chat panel
-- [ ] Text input + voice input (Web Speech API)
-- [ ] Suggested opener chips, time-aware (Friday → weekend menu, morning → late-start)
-- [ ] Streaming answers with **inline citations** to handbook sections (trust)
+### Parent chat
+- [x] ~~Floating bubble → expanding chat panel~~ — **pivoted: dedicated `/chat` route** reached via a quiet Navbar link. Honest navigation, no hollow CTAs on the marketing page.
+- [x] Text input (Enter-to-send, Shift-Enter for newline)
+- [ ] Voice input (Web Speech API) — deferred
+- [ ] Suggested opener chips, time-aware (Friday → weekend menu, morning → late-start) — deferred
+- [~] Streaming answers with **inline citations** to handbook sections — text markers (`[§ Section Title]`) are present in responses; UI-rendering them as clickable anchors is deferred (was phase 5c)
 - [ ] Confidence-aware responses:
   - High → direct answer + citation
   - Medium → answer + "want me to confirm with staff?"
   - Low/sensitive → graceful handoff, logs the question
-- [ ] Sensitive intent routing:
+- [ ] Sensitive intent routing (phase 7):
   - Illness symptoms → policy + "notify teacher" CTA
   - Enrollment/tours → structured lead capture
   - Emergencies → "call 911 / call center" escalation, no LLM
 - [ ] Spanish detection + Spanish responses
 
-### Operator dashboard
+### Operator dashboard (phase 8+)
 - [ ] Overview: questions today, auto-resolved %, escalations, top topics, estimated time saved
 - [ ] Handbook editor (markdown, sectioned, versioned by timestamp)
 - [ ] Question log with filters (escalated, low-confidence, by topic)
@@ -68,24 +69,24 @@ Where center staff manage the source of truth and see what parents are asking.
 - [ ] Lead inbox (captured tour requests)
 
 ### Content
-- [ ] Handbook: 10–15 sections covering hours, holidays, tuition, illness (24-hr fever-free), meals, tours, pickup, immunization, weather closures, curriculum
-- [ ] Two personality touches (director bio, a quirky tradition) — makes it feel real
-- [ ] ~30 seeded historical questions for the demo so the operator view isn't empty
+- [x] Handbook: 15 sections covering hours, holidays, tuition, illness (24-hr fever-free), meals, tours, pickup, immunizations, weather closures, curriculum — adapted from City of Albuquerque Division of Child & Family Development Family Handbook
+- [x] Two personality touches: director's note (Maria Hernández), plus three traditions (Muffin Mornings, Garden Harvest, Butterfly Release)
+- [ ] ~30 seeded historical questions for the demo so the operator view isn't empty — deferred to phase 10
 
 ## Build order
 
-1. **Setup** — SETUP.md checklist complete
-2. **Scaffold** — Next.js + Tailwind + shadcn/ui + Supabase client
-3. **Handbook content** — write it before any retrieval code; it IS the product
-4. **Landing page** — Slow Cooker marketing site (anchors the whole aesthetic)
-5. **Chat widget shell** — floating bubble, open/close, message UI
-6. **RAG pipeline** — chunk handbook → embed → retrieve → answer with citations
+1. ✅ **Setup** — SETUP.md checklist complete
+2. ✅ **Scaffold** — Next.js 15 + Tailwind v4 + shadcn/ui + Supabase client, bun, Vitest
+3. ✅ **Handbook content** — 15 sections adapted from the ABQ Division of Child & Family Development Family Handbook
+4. ✅ **Landing page** — Slow Cooker editorial-adobe marketing site (Fraunces + Geist, terracotta accent, paper-grain)
+5. ✅ **Chat UI** — dedicated `/chat` route with message list, streaming input, and back-to-home header *(originally framed as a floating bubble; pivoted to a full-page route)*
+6. ✅ **RAG pipeline** — `lib/rag/{chunk,retrieve,answer}` + `lib/voyage/embed`, Supabase pgvector (HNSW), Voyage voyage-4-lite asymmetric embeddings, Claude Sonnet 4.6 streaming with prompt caching, `[§ Section]` citation markers
 7. **Intent classifier** — route sensitive/emergency/lead cases before RAG
 8. **Operator dashboard** — handbook editor, question log, overview
 9. **Knowledge gap detector** — the wow moment
-10. **Seed data + polish** — animations, empty states, error states
+10. **Seed data + polish** — animations, empty states, error states, ~30 historical questions
 11. **Eval sweep** — 20 test questions, iterate prompts until ≥18 feel great
-12. **Deploy** — Vercel, env vars, smoke test on real phone
+12. **Deploy** — ✅ already live at `brightwheelfrontdesk.vercel.app` with GitHub auto-deploy; remaining: real-phone smoke test
 13. **Loom demo** — tight 90-sec script, no rambling
 
 ## Day-by-day
@@ -120,7 +121,7 @@ Where center staff manage the source of truth and see what parents are asking.
 | Criterion | Strategy |
 |---|---|
 | Scope & completeness | Polished depth over hasty breadth. Show one flywheel working end-to-end. |
-| Persuasiveness | The landing page + "Powered by Brightwheel" widget framing makes this feel like a product, not a demo. |
+| Persuasiveness | The landing page is deliberately fact-free; every factual question must go through `/chat`, which makes the chat the product. |
 | User empathy | Voice input, Spanish, time-aware suggestions, clear escalation. Show we thought about real conditions. |
 | Uniqueness | The knowledge gap detector. Genuinely rare in this space. |
 

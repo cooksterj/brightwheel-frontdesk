@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ChatCTA } from "./ChatCTA";
 import { UnderlineScribble } from "./UnderlineScribble";
 
 const fade = {
@@ -44,6 +45,17 @@ export function Hero() {
             Quiet care, plain food, slow mornings. The Slow Cooker is where
             the day moves at a child's pace.
           </motion.p>
+
+          <motion.div
+            {...fade}
+            transition={{ duration: 0.9, delay: 0.45 }}
+            className="mt-12 flex flex-wrap items-center gap-6"
+          >
+            <ChatCTA />
+            <span className="font-sans text-[13px] italic text-ink-mute">
+              tuition, hours, sick days — real answers, right now.
+            </span>
+          </motion.div>
         </div>
 
         <motion.div
