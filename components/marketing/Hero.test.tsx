@@ -9,13 +9,8 @@ describe("<Hero />", () => {
     expect(screen.getByText(/gentle/i)).toBeInTheDocument();
   });
 
-  it("renders both CTAs", () => {
+  it("renders the eyebrow", () => {
     render(<Hero />);
-    expect(
-      screen.getByRole("button", { name: /ask us anything/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: /book a tour/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/family day school/i)).toBeInTheDocument();
   });
 });

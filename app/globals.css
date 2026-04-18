@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Sunnybrook — editorial adobe palette.
+/* The Slow Cooker — editorial adobe palette.
    Warm paper background, terracotta accent, deep dusk contrast section.
    Fraunces (SOFT axis, opsz 144) as display; Geist as body. */
 @theme inline {
@@ -51,7 +51,7 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* Sunnybrook palette */
+  /* The Slow Cooker palette */
   --color-paper: #f4ebda;
   --color-paper-deep: #ecdfc5;
   --color-paper-edge: #d9c6a2;

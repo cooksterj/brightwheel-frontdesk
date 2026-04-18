@@ -1,4 +1,3 @@
-import { AskAnything } from "@/components/marketing/AskAnything";
 import { Footer } from "@/components/marketing/Footer";
 import { Gallery } from "@/components/marketing/Gallery";
 import { Hero } from "@/components/marketing/Hero";
@@ -14,7 +13,6 @@ export default function Home() {
       <Philosophy />
       <Gallery />
       <Testimonials />
-      <AskAnything />
       <Footer />
     </main>
   );

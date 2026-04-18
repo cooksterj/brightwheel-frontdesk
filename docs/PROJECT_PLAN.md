@@ -16,7 +16,7 @@ Not trying to handle every question. Trying to handle a realistic set *extremely
 
 Two surfaces, shipped together:
 
-### 1. Public — "Sunnybrook Early Learning" demo site (`/`)
+### 1. Public — "The Slow Cooker" demo site (`/`)
 A real-feeling marketing site for a fictional daycare. Hero, programs, tuition, tour CTA, testimonials, contact.
 
 **Floating chat bubble bottom-right** (Intercom/Drift pattern) expands into a polished chat panel. This is where the parent experience lives. The widget is branded "Powered by Brightwheel" — subtle but intentional: this is the product pitch.
@@ -32,7 +32,7 @@ Where center staff manage the source of truth and see what parents are asking.
 | Styling | **Tailwind CSS** | Maximum flexibility, no lock-in to a library's look |
 | Components | **shadcn/ui** | Copy-into-repo components we own and freely modify |
 | Animation | **Framer Motion** | Chat bubble transitions, message fade-ins — polish |
-| Fonts | **Geist** (sans) + a friendly display face (e.g., Fraunces) for Sunnybrook | Warm but modern |
+| Fonts | **Geist** (sans) + a friendly display face (e.g., Fraunces) for the Slow Cooker | Warm but modern |
 | LLM | **Claude Sonnet 4.6** (answers) + **Haiku 4.5** (intent classification, cheap background tasks) | Best quality where it matters, cheap where it doesn't |
 | Voice input | **Web Speech API** | Free, no infra, real accessibility value |
 | DB | **Supabase** (Postgres + pgvector) | Real Postgres, nice table editor for live demo, free tier |
@@ -68,7 +68,7 @@ Where center staff manage the source of truth and see what parents are asking.
 - [ ] Lead inbox (captured tour requests)
 
 ### Content
-- [ ] Sunnybrook handbook: 10–15 sections covering hours, holidays, tuition, illness (24-hr fever-free), meals, tours, pickup, immunization, weather closures, curriculum
+- [ ] Handbook: 10–15 sections covering hours, holidays, tuition, illness (24-hr fever-free), meals, tours, pickup, immunization, weather closures, curriculum
 - [ ] Two personality touches (director bio, a quirky tradition) — makes it feel real
 - [ ] ~30 seeded historical questions for the demo so the operator view isn't empty
 
@@ -77,7 +77,7 @@ Where center staff manage the source of truth and see what parents are asking.
 1. **Setup** — SETUP.md checklist complete
 2. **Scaffold** — Next.js + Tailwind + shadcn/ui + Supabase client
 3. **Handbook content** — write it before any retrieval code; it IS the product
-4. **Landing page** — Sunnybrook marketing site (anchors the whole aesthetic)
+4. **Landing page** — Slow Cooker marketing site (anchors the whole aesthetic)
 5. **Chat widget shell** — floating bubble, open/close, message UI
 6. **RAG pipeline** — chunk handbook → embed → retrieve → answer with citations
 7. **Intent classifier** — route sensitive/emergency/lead cases before RAG
@@ -93,7 +93,7 @@ Where center staff manage the source of truth and see what parents are asking.
 **Day 1 — Foundation**
 - Accounts set up (SETUP.md)
 - Repo scaffolded, deployed to Vercel (empty page) to de-risk hosting
-- Sunnybrook handbook written
+- Handbook written
 - Landing page shell
 
 **Day 2 — Two surfaces**

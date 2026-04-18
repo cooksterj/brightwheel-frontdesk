@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AskButton } from "./AskButton";
 import { UnderlineScribble } from "./UnderlineScribble";
 
 const fade = {
@@ -42,23 +41,9 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.3 }}
             className="mt-10 max-w-[52ch] font-sans text-[17px] leading-[1.7] text-ink-soft md:mt-12 md:text-[18px]"
           >
-            Quiet care, plain food, slow mornings. Sunnybrook is where the day
-            moves at a child's pace — and where the hard questions, from fevers
-            to first days, have real answers.
+            Quiet care, plain food, slow mornings. The Slow Cooker is where
+            the day moves at a child's pace.
           </motion.p>
-
-          <motion.div
-            {...fade}
-            transition={{ duration: 0.9, delay: 0.45 }}
-            className="mt-12 flex flex-wrap items-center gap-4"
-          >
-            <AskButton variant="primary" intent="general" source="hero">
-              Ask us anything
-            </AskButton>
-            <AskButton variant="secondary" intent="tour" source="hero">
-              Book a tour
-            </AskButton>
-          </motion.div>
         </div>
 
         <motion.div

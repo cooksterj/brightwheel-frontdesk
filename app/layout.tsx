@@ -22,9 +22,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sunnybrook Early Learning",
+  title: "The Slow Cooker — Early Learning",
   description:
-    "A small early-learning family school. Ask us anything — tuition, illness, first days, hard mornings.",
+    "A small early-learning family school in Albuquerque. Quiet care, plain food, slow mornings.",
 };
 
 export default function RootLayout({

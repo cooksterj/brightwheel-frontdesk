@@ -6,6 +6,7 @@ describe("parseServerEnv", () => {
     ANTHROPIC_API_KEY: "sk-ant-api03-xxx",
     SUPABASE_SECRET_KEY: "sb_secret_xxx",
     DATABASE_URL: "postgresql://user:pass@host:5432/db",
+    VOYAGE_API_KEY: "pa-xxx",
   };
 
   it("parses a complete server env", () => {

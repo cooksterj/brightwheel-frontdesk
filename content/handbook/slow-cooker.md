@@ -1,15 +1,15 @@
 ---
-title: Sunnybrook Early Learning — Family Handbook
+title: The Slow Cooker — Family Handbook
 version: 2026.1
 effective: 2026-01-06
 adapted_from: City of Albuquerque Division of Child & Family Development — Family Handbook (Rev. April 2019)
 ---
 
-# Sunnybrook Early Learning — Family Handbook
+# The Slow Cooker — Family Handbook
 
-Welcome to Sunnybrook. This handbook describes how we care for, teach, and partner with the families in our program. Policies follow New Mexico CYFD licensing standards and USDA CACFP nutrition guidelines, and are adapted from the City of Albuquerque Division of Child & Family Development's Family Handbook.
+Welcome to the Slow Cooker. This handbook describes how we care for, teach, and partner with the families in our program. Policies follow New Mexico CYFD licensing standards and USDA CACFP nutrition guidelines, and are adapted from the City of Albuquerque Division of Child & Family Development's Family Handbook.
 
-If something in this handbook is unclear, please ask your child's Head Teacher or email the director at `hello@sunnybrook.example`.
+If something in this handbook is unclear, please ask your child's Head Teacher or email the director at `hello@slowcooker.example`.
 
 ## Philosophy
 
@@ -19,7 +19,7 @@ Our doors are always open to hear about your child's successes, needs, and conce
 
 ## Hours of Operation
 
-Sunnybrook is open **Monday through Friday, 7:30 a.m. – 5:30 p.m.** We are closed on weekends.
+The Slow Cooker is open **Monday through Friday, 7:30 a.m. – 5:30 p.m.** We are closed on weekends.
 
 - **Infants (6 weeks – 18 months):** full day 7:30–5:30
 - **Toddlers (18 months – 3 years):** full day 7:30–5:30
@@ -29,7 +29,7 @@ Families must schedule arrivals before **9:30 a.m.** so that teachers can plan t
 
 ## Closure Calendar
 
-Sunnybrook observes the following closures each year. Closure dates are also posted on the parent bulletin board and sent in the monthly newsletter.
+The Slow Cooker observes the following closures each year. Closure dates are also posted on the parent bulletin board and sent in the monthly newsletter.
 
 - **New Year's Day** (Jan 1)
 - **Martin Luther King Jr. Day** (3rd Monday in January)
@@ -47,13 +47,13 @@ Tuition is **not pro-rated** for these scheduled closures; they are already refl
 
 ## Weather & Emergency Closures
 
-Sunnybrook generally follows **Albuquerque Public Schools** for snow, ice, and severe-weather closures. When APS closes or has a delayed start, Sunnybrook closes or delays by the same amount.
+The Slow Cooker generally follows **Albuquerque Public Schools** for snow, ice, and severe-weather closures. When APS closes or has a delayed start, the Slow Cooker closes or delays by the same amount.
 
 We announce closures by **8:00 p.m. the night before** when possible, or by **6:00 a.m. the day of** for overnight weather events. Notifications go out by:
 
 1. Text message to the enrolling parent's phone on file
 2. Email
-3. A banner on the Sunnybrook website
+3. A banner on the Slow Cooker website
 
 If the center must close mid-day because of an emergency (power outage, water main, severe weather moving in), we will call every family on the pick-up list and ask them to pick up as soon as possible. Please keep your emergency contacts current.
 
@@ -81,7 +81,7 @@ Fees are paid online through the parent portal. Checks and money orders are acce
 
 We welcome tours by appointment, Tuesday through Thursday, 9:30–11:00 a.m. or 3:00–4:30 p.m. Tours take about 40 minutes and include a walk through the classrooms, a chance to meet the director, and time for your questions.
 
-To request a tour, message us through the chat on sunnybrook.example or call (505) 555-0142.
+To request a tour, message us through the chat on slowcooker.example or call (505) 555-0142.
 
 When you're ready to enroll, you'll complete:
 
@@ -147,7 +147,7 @@ If a vaccine-preventable illness is circulating at the center, under-vaccinated 
 
 ## Meals & Food Allergies
 
-Sunnybrook participates in the **USDA Child and Adult Care Food Program (CACFP)**. Meals meet CACFP nutrition standards, and the same meals are offered to every child. Our meal schedule:
+The Slow Cooker participates in the **USDA Child and Adult Care Food Program (CACFP)**. Meals meet CACFP nutrition standards, and the same meals are offered to every child. Our meal schedule:
 
 - **Breakfast** — 8:00 a.m.
 - **Morning snack** — 9:45 a.m.
@@ -196,17 +196,17 @@ If you need to reach your child's teacher during the day, please call the front 
 
 ## A Note From Our Director
 
-> I'm Maria Hernández. I've spent 17 years in early childhood — most of them as a preschool teacher in the Albuquerque Public Schools, and the last six building Sunnybrook. I opened this center because I wanted a place where the youngest New Mexicans could spend their days in a warm, unhurried, Spanish-and-English environment, learning the way children actually learn: through play, through repetition, through relationships with adults who know them.
+> I'm Maria Hernández. I've spent 17 years in early childhood — most of them as a preschool teacher in the Albuquerque Public Schools, and the last six building the Slow Cooker. I opened this center because I wanted a place where the youngest New Mexicans could spend their days in a warm, unhurried, Spanish-and-English environment, learning the way children actually learn: through play, through repetition, through relationships with adults who know them.
 >
 > Our teachers are all credentialed in early childhood education or working toward it. Every member of staff is First Aid + CPR certified, fingerprint-cleared, and trained annually on mandated-reporter responsibilities under NM law.
 >
-> If you are touring Sunnybrook for the first time, please ask hard questions. Ask how we handle conflict between children. Ask how we handle biting. Ask what we do when a child is having a very bad morning. Ask about food, about naps, about the bathroom. I promise we will answer honestly.
+> If you are touring the Slow Cooker for the first time, please ask hard questions. Ask how we handle conflict between children. Ask how we handle biting. Ask what we do when a child is having a very bad morning. Ask about food, about naps, about the bathroom. I promise we will answer honestly.
 >
 > — Maria
 
-## Sunnybrook Traditions
+## A Few of Our Traditions
 
-A few things that make Sunnybrook feel like Sunnybrook:
+A few things that make the Slow Cooker feel like itself:
 
 **Muffin Mornings.** The first Friday of every month we open at 7:45 with fresh muffins and coffee on the front porch. Parents who can linger are welcome to — it's the easiest way to meet the other families in your child's classroom.
 
@@ -216,4 +216,4 @@ A few things that make Sunnybrook feel like Sunnybrook:
 
 ---
 
-*This handbook is adapted with permission of spirit — though not legal rights — from the **City of Albuquerque Division of Child & Family Development Family Handbook** (Revised April 2019). Where policies differ, Sunnybrook's policies govern. Where Sunnybrook is silent, New Mexico CYFD Child Care Regulations govern.*
+*This handbook is adapted with permission of spirit — though not legal rights — from the **City of Albuquerque Division of Child & Family Development Family Handbook** (Revised April 2019). Where policies differ, the Slow Cooker's policies govern. Where the Slow Cooker is silent, New Mexico CYFD Child Care Regulations govern.*
