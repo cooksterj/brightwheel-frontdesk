@@ -14,7 +14,7 @@ A take-home prototype for a Brightwheel. A fictional daycare ("The Slow Cooker")
 - [Handbook content](#handbook-content)
 - [Quickstart](#quickstart)
   - [1. Clone and install](#1-clone-and-install)
-  - [2. External accounts (~15 min total)](#2-external-accounts-15-min-total)
+  - [2. External accounts](#2-external-accounts)
   - [3. Environment](#3-environment)
   - [4. Apply the Supabase migrations](#4-apply-the-supabase-migrations)
   - [5. Seed](#5-seed)
@@ -27,12 +27,30 @@ A take-home prototype for a Brightwheel. A fictional daycare ("The Slow Cooker")
 
 ## Demonstration
 
-Base chat functionality with three questions:
+### Base chat functionality - parent experience
+
+Three questions:
 1. Tuition based
 2. A likely emergency scenario
 3. Data that is not contained in the handbook
 
 https://github.com/user-attachments/assets/f7d0ab30-2f0f-4526-b406-8e3ad4fb7c8e
+
+### Editing handbook - administrator experience
+
+Navigate to **https://brightwheelfrontdesk.vercel.app/admin/**
+
+The application handles edits to the handbook and they are immediately applied to be chat ready:
+
+https://github.com/user-attachments/assets/609ac5dd-4ff3-4dcc-9a3c-b37f8ebb77d7
+
+### Knowledge Gaps - administrator experience
+
+Navigate to **https://brightwheelfrontdesk.vercel.app/admin/**
+
+When a parent question has a low match against the handbook, it's logged and surfaced to administrators. Each gap comes with a drafted section the admin can edit or accept outright, and merging it takes effect immediately: the chat uses the updated handbook on the very next question. For example, after the food question was merged, it no longer appeared as an open knowledge gap.
+
+https://github.com/user-attachments/assets/15784f8f-0e30-436e-bef1-71ec9d276f7d
 
 ## The stack
 
@@ -62,7 +80,7 @@ cd brightwheel-frontdesk
 bun install
 ```
 
-### 2. External accounts (~15 min total)
+### 2. External accounts
 
 The full checklist is in [`docs/SETUP.md`](docs/SETUP.md). You'll need:
 
