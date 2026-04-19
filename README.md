@@ -9,6 +9,7 @@ A take-home prototype for a Brightwheel. A fictional daycare ("The Slow Cooker")
 
 ## Contents
 
+- [Demonstration](#demonstration)
 - [The stack](#the-stack)
 - [Handbook content](#handbook-content)
 - [Quickstart](#quickstart)
@@ -23,6 +24,15 @@ A take-home prototype for a Brightwheel. A fictional daycare ("The Slow Cooker")
 - [Safety posture (for a demo)](#safety-posture-for-a-demo)
 - [What's not here (by design, or deferred)](#whats-not-here-by-design-or-deferred)
 - [What can be improved](#what-can-be-improved)
+
+## Demonstration
+
+Base chat functionality with three questions:
+1. Tuition based
+2. A likely emergency scenario
+3. Data that is not contained in the handbook
+
+https://github.com/user-attachments/assets/f7d0ab30-2f0f-4526-b406-8e3ad4fb7c8e
 
 ## The stack
 
