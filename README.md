@@ -38,7 +38,7 @@ https://github.com/user-attachments/assets/f7d0ab30-2f0f-4526-b406-8e3ad4fb7c8e
 
 ### Editing handbook - administrator experience
 
-Navigate to **https://brightwheelfrontdesk.vercel.app/admin/**
+Click **Admin** in the top-right of the landing page, or go directly to **https://brightwheelfrontdesk.vercel.app/admin/**.
 
 The application handles edits to the handbook and they are immediately applied to be chat ready:
 
@@ -46,7 +46,7 @@ https://github.com/user-attachments/assets/609ac5dd-4ff3-4dcc-9a3c-b37f8ebb77d7
 
 ### Knowledge Gaps - administrator experience
 
-Navigate to **https://brightwheelfrontdesk.vercel.app/admin/**
+Click **Admin** in the top-right of the landing page, or go directly to **https://brightwheelfrontdesk.vercel.app/admin/**.
 
 When a parent question has a low match against the handbook, it's logged and surfaced to administrators. Each gap comes with a drafted section the admin can edit or accept outright, and merging it takes effect immediately: the chat uses the updated handbook on the very next question. For example, after the food question was merged, it no longer appeared as an open knowledge gap.
 

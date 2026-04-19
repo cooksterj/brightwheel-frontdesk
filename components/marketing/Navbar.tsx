@@ -11,7 +11,15 @@ export function Navbar() {
         The Slow Cooker
         <span className="ml-2 align-middle text-clay">·</span>
       </Link>
-      <ChatCTA size="sm" />
+      <nav className="flex items-center gap-5 sm:gap-7">
+        <Link
+          href="/admin"
+          className="font-sans text-[11px] uppercase tracking-[0.22em] text-ink-mute transition-colors hover:text-ink"
+        >
+          Admin
+        </Link>
+        <ChatCTA size="sm" />
+      </nav>
     </header>
   );
 }

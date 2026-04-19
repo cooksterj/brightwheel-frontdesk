@@ -32,7 +32,7 @@ A website for a fictional daycare called *The Slow Cooker*. Parents get a privat
 
 ## Try it as an operator
 
-1. Open [`/admin`](https://brightwheelfrontdesk.vercel.app/admin). Two cards: **Handbook** and **Knowledge gaps**.
+1. From the [live site](https://brightwheelfrontdesk.vercel.app), click **Admin** in the top-right of the header (or go directly to [`/admin`](https://brightwheelfrontdesk.vercel.app/admin)). Two cards: **Handbook** and **Knowledge gaps**.
 2. **Handbook:** pick any section (e.g. *Hours of Operation*), change a detail, click **Save**. Open `/chat` in another tab and ask about that detail. The chat reflects your edit on the next question.
 3. **Knowledge gaps:** parent questions the chat couldn't confidently answer are grouped by topic. Each group includes a proposed new handbook section. Edit the draft if you want, click **Merge as handbook section**. The new section goes live; the questions in that cluster are marked resolved and stop reappearing as gaps.
 
