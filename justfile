@@ -96,6 +96,10 @@ build:
 seed:
     bun run scripts/seed-handbook.ts
 
+# Seed 30 synthetic parent questions so the operator dashboard / gap detector have data
+seed-questions:
+    bun run scripts/seed-questions.ts
+
 # ──────────────────────────────────────────────────────────────────────────────
 # vercel
 # ──────────────────────────────────────────────────────────────────────────────

@@ -4,6 +4,7 @@ import type { NextRequest } from "next/server";
 import type { Message } from "@/lib/chat/types";
 import { getPublicEnv, getServerEnv } from "@/lib/env";
 import { streamAnswer } from "@/lib/rag/answer";
+import { logQuestion } from "@/lib/rag/log";
 import { retrieveSections } from "@/lib/rag/retrieve";
 import { validateMessageLimits } from "@/lib/security/limits";
 import { isAllowedOrigin } from "@/lib/security/origin";
@@ -81,6 +82,7 @@ export async function POST(req: NextRequest) {
   }));
 
   const encoder = new TextEncoder();
+  let fullAnswer = "";
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       try {
@@ -89,6 +91,7 @@ export async function POST(req: NextRequest) {
           messages,
           sections,
         })) {
+          fullAnswer += chunk;
           controller.enqueue(encoder.encode(chunk));
         }
       } catch (err) {
@@ -100,6 +103,15 @@ export async function POST(req: NextRequest) {
         );
       } finally {
         controller.close();
+        // Best-effort log. The response has already flushed to the browser;
+        // we just keep the serverless function alive a few extra ms to
+        // persist the Q&A for the operator dashboard + gap detector.
+        await logQuestion(supabase, {
+          query: lastUser.content,
+          queryEmbedding: queryVector,
+          answer: fullAnswer,
+          sections,
+        });
       }
     },
   });
