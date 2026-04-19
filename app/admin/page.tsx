@@ -7,8 +7,8 @@ export default function AdminIndex() {
         Admin
       </h1>
       <p className="max-w-[60ch] font-sans text-[16px] leading-[1.6] text-ink-soft">
-        Edit the family handbook, review what parents are asking, and spot gaps
-        where the chat is coming up short.
+        Edit the family handbook and close gaps the chat can't cover yet. Every
+        change goes live on the next parent question.
       </p>
       <nav className="grid gap-4 sm:grid-cols-2">
         <Link
@@ -22,15 +22,18 @@ export default function AdminIndex() {
             Browse and edit the sections the chat draws from.
           </p>
         </Link>
-        <div
-          aria-disabled
-          className="rounded-md border border-paper-edge/60 bg-paper-deep p-6 opacity-60"
+        <Link
+          href="/admin/gaps"
+          className="group rounded-md border border-paper-edge bg-cream p-6 transition-colors hover:border-clay"
         >
-          <h2 className="font-display text-[22px] text-ink-mute">Questions</h2>
-          <p className="mt-2 font-sans text-[14px] text-ink-mute">
-            What parents are asking. <em>Coming next.</em>
+          <h2 className="font-display text-[22px] text-ink group-hover:text-clay">
+            Knowledge gaps
+          </h2>
+          <p className="mt-2 font-sans text-[14px] text-ink-soft">
+            Clusters of questions the chat struggled with — and drafted
+            handbook sections you can merge.
           </p>
-        </div>
+        </Link>
       </nav>
     </div>
   );
