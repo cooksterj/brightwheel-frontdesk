@@ -14,7 +14,7 @@ export function Navbar() {
       <nav className="flex items-center gap-5 sm:gap-7">
         <Link
           href="/admin"
-          className="font-sans text-[11px] uppercase tracking-[0.22em] text-ink-mute transition-colors hover:text-ink"
+          className="font-sans text-[11px] uppercase tracking-[0.22em] text-ink-soft transition-colors hover:text-ink"
         >
           Admin
         </Link>
