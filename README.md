@@ -126,6 +126,7 @@ just dev          # Next.js dev server on :3000
 - `/`: marketing page (fact-free; chat is the product)
 - `/chat`: parent chat
 - `/admin/handbook`: edit policies (saves re-embed + snapshot the previous version)
+- `/admin/questions`: full log of what parents have asked, filterable by confidence
 - `/admin/gaps`: clustered unanswered questions + one-click merge
 
 ## Daily commands

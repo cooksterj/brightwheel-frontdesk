@@ -27,6 +27,7 @@ flowchart LR
       Landing["/ (landing)<br/>RSC"]
       Chat["/chat<br/>client"]
       AdminH["/admin/handbook<br/>RSC + client editor"]
+      AdminQ["/admin/questions<br/>RSC log view"]
       AdminG["/admin/gaps<br/>client"]
       ChatAPI["/api/chat<br/>Node runtime"]
       AdminHAPI["/api/admin/handbook/[slug]<br/>GET · PATCH"]
@@ -48,10 +49,12 @@ flowchart LR
     Parent --> Landing
     Parent --> Chat
     Operator --> AdminH
+    Operator --> AdminQ
     Operator --> AdminG
 
     Chat -- POST --> ChatAPI
     AdminH -- PATCH --> AdminHAPI
+    AdminQ -- read log --> DBQ
     AdminG -- GET/POST --> AdminGAPI
 
     ChatAPI -- classify --> Haiku
@@ -73,7 +76,7 @@ flowchart LR
     RPC1 --> DBH
     RPC2 --> DBQ
 
-    class Landing,Chat,AdminH,AdminG,ChatAPI,AdminHAPI,AdminGAPI svc
+    class Landing,Chat,AdminH,AdminQ,AdminG,ChatAPI,AdminHAPI,AdminGAPI svc
     class DBH,DBV,DBQ,RPC1,RPC2 svc
 ```
 

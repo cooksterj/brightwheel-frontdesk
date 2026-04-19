@@ -3,23 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { GapCluster } from "@/app/api/admin/gaps/route";
-
-function ConfidenceBadge({ confidence }: { confidence: string | null }) {
-  const tone =
-    confidence === "low"
-      ? "bg-clay/15 text-clay-deep"
-      : confidence === "medium"
-        ? "bg-paper-deep text-ink-soft"
-        : "bg-paper-deep text-ink-mute";
-  const label = confidence ?? "unknown";
-  return (
-    <span
-      className={`shrink-0 rounded-full px-2 py-0.5 font-sans text-[10px] uppercase tracking-[0.22em] ${tone}`}
-    >
-      {label}
-    </span>
-  );
-}
+import { ConfidenceBadge } from "./ConfidenceBadge";
 
 type Status =
   | { kind: "idle" }
