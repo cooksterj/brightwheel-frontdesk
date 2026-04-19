@@ -1,9 +1,9 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { createClient } from "@supabase/supabase-js";
 import type { NextRequest } from "next/server";
-import { getPublicEnv, getServerEnv } from "@/lib/env";
+import { getServerEnv } from "@/lib/env";
 import { clusterBySimilarity, parseVector } from "@/lib/rag/cluster";
 import { proposeSection, type ProposedSection } from "@/lib/rag/propose-section";
+import { createAdminSupabase } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -26,12 +26,7 @@ export interface GapCluster {
 
 export async function GET(_req: NextRequest) {
   const server = getServerEnv();
-  const pub = getPublicEnv();
-  const supabase = createClient(
-    pub.NEXT_PUBLIC_SUPABASE_URL,
-    server.SUPABASE_SECRET_KEY,
-    { auth: { persistSession: false } },
-  );
+  const supabase = createAdminSupabase();
 
   // Exclude emergency + tour — those aren't handbook gaps (one is safety,
   // the other is a lead). Keep rows where intent is null (pre-phase-7 data)

@@ -100,6 +100,8 @@ async function main() {
 
   console.log("retrieving sections + computing confidence…");
   const buckets = { high: 0, medium: 0, low: 0 };
+  let inserted = 0;
+  let failed = 0;
   for (let i = 0; i < QUESTIONS.length; i++) {
     const query = QUESTIONS[i];
     const queryEmbedding = vectors[i];
@@ -115,17 +117,26 @@ async function main() {
 
     const { error } = await supabase.from("questions").insert(row);
     if (error) {
+      failed++;
       console.error(`✗ "${query.slice(0, 50)}…": ${error.message}`);
       continue;
     }
+    inserted++;
     buckets[row.confidence]++;
     const sim = row.top_similarity?.toFixed(2).padStart(4, " ") ?? " n/a";
     console.log(
       `  ${row.confidence.padEnd(6)} | ${sim} | ${query.slice(0, 70)}${query.length > 70 ? "…" : ""}`,
     );
   }
+
+  if (failed > 0) {
+    console.error(
+      `\n✗ seeded ${inserted} of ${QUESTIONS.length} questions (${failed} failed). Common cause: a Supabase migration hasn't been applied. Check supabase/migrations/ against your project's SQL Editor history.`,
+    );
+    process.exit(1);
+  }
   console.log(
-    `\n✓ seeded ${QUESTIONS.length} questions — high=${buckets.high}, medium=${buckets.medium}, low=${buckets.low}`,
+    `\n✓ seeded ${inserted} of ${QUESTIONS.length} questions. high=${buckets.high}, medium=${buckets.medium}, low=${buckets.low}`,
   );
 }
 

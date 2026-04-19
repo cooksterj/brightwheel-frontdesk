@@ -1,9 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
 import type { NextRequest } from "next/server";
-import { getPublicEnv, getServerEnv } from "@/lib/env";
+import { getServerEnv } from "@/lib/env";
 import { createSection } from "@/lib/handbook/create-section";
 import { reembedSection } from "@/lib/handbook/reembed";
 import { isAllowedOrigin } from "@/lib/security/origin";
+import { createAdminSupabase } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -49,12 +49,7 @@ export async function POST(req: NextRequest) {
   if (content.length > 20_000) return json({ error: "body too long" }, 413);
 
   const server = getServerEnv();
-  const pub = getPublicEnv();
-  const supabase = createClient(
-    pub.NEXT_PUBLIC_SUPABASE_URL,
-    server.SUPABASE_SECRET_KEY,
-    { auth: { persistSession: false } },
-  );
+  const supabase = createAdminSupabase();
 
   const embedding = await reembedSection(title, content, {
     apiKey: server.VOYAGE_API_KEY,

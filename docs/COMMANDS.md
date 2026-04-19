@@ -30,6 +30,9 @@ Source of truth: [`justfile`](../justfile) at the repo root. Run `just` (no args
 | Recipe | What |
 |---|---|
 | `just build` | Next.js production build |
+| `just seed` | Parse handbook markdown, embed, upsert `handbook_sections` |
+| `just seed-questions` | Seed 30 synthetic parent questions (idempotent) |
+| `just reset` | **Destructive.** Wipe handbook + versions + questions, then reseed. Prompts `[y/N]`. |
 
 ## Vercel
 

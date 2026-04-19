@@ -1,14 +1,14 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { createClient } from "@supabase/supabase-js";
 import type { NextRequest } from "next/server";
 import type { Message } from "@/lib/chat/types";
-import { getPublicEnv, getServerEnv } from "@/lib/env";
+import { getServerEnv } from "@/lib/env";
 import { streamAnswer } from "@/lib/rag/answer";
 import { classifyIntent, type Intent } from "@/lib/rag/classify-intent";
 import { logQuestion } from "@/lib/rag/log";
 import { retrieveSections } from "@/lib/rag/retrieve";
 import { validateMessageLimits } from "@/lib/security/limits";
 import { isAllowedOrigin } from "@/lib/security/origin";
+import { createAdminSupabase } from "@/lib/supabase/admin";
 import { embed } from "@/lib/voyage/embed";
 
 export const runtime = "nodejs";
@@ -86,13 +86,8 @@ export async function POST(req: NextRequest) {
   }
 
   const server = getServerEnv();
-  const pub = getPublicEnv();
   const anthropic = new Anthropic({ apiKey: server.ANTHROPIC_API_KEY });
-  const supabase = createClient(
-    pub.NEXT_PUBLIC_SUPABASE_URL,
-    server.SUPABASE_SECRET_KEY,
-    { auth: { persistSession: false } },
-  );
+  const supabase = createAdminSupabase();
 
   // 3. Intent classifier — Haiku gate before RAG. Routes emergencies to a
   //    canned "call 911" message (no LLM), tailors illness / tour answers.

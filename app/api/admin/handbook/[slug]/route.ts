@@ -1,9 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
 import type { NextRequest } from "next/server";
-import { getPublicEnv, getServerEnv } from "@/lib/env";
+import { getServerEnv } from "@/lib/env";
 import { reembedSection } from "@/lib/handbook/reembed";
 import { getSection, updateSection } from "@/lib/handbook/repo";
 import { isAllowedOrigin } from "@/lib/security/origin";
+import { createAdminSupabase } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -30,22 +30,12 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
-function supabaseServer() {
-  const server = getServerEnv();
-  const pub = getPublicEnv();
-  return createClient(
-    pub.NEXT_PUBLIC_SUPABASE_URL,
-    server.SUPABASE_SECRET_KEY,
-    { auth: { persistSession: false } },
-  );
-}
-
 export async function GET(
   _req: NextRequest,
   ctx: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await ctx.params;
-  const supabase = supabaseServer();
+  const supabase = createAdminSupabase();
   const row = await getSection(supabase, slug);
   if (!row) return jsonError("section not found", 404);
   return json(row);
@@ -85,7 +75,7 @@ export async function PATCH(
     return jsonError(`body too long (max ${MAX_BODY} chars)`, 413);
   }
 
-  const supabase = supabaseServer();
+  const supabase = createAdminSupabase();
   const current = await getSection(supabase, slug);
   if (!current) return jsonError("section not found", 404);
 

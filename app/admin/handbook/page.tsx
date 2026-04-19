@@ -1,19 +1,11 @@
-import { createClient } from "@supabase/supabase-js";
 import { SectionList } from "@/components/admin/SectionList";
-import { getPublicEnv, getServerEnv } from "@/lib/env";
 import { listSections } from "@/lib/handbook/repo";
+import { createAdminSupabase } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
 
 export default async function HandbookIndex() {
-  const server = getServerEnv();
-  const pub = getPublicEnv();
-  const supabase = createClient(
-    pub.NEXT_PUBLIC_SUPABASE_URL,
-    server.SUPABASE_SECRET_KEY,
-    { auth: { persistSession: false } },
-  );
-  const sections = await listSections(supabase);
+  const sections = await listSections(createAdminSupabase());
 
   return (
     <div className="flex flex-col gap-6">

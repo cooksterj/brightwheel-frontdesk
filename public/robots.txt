@@ -1,2 +1,17 @@
+# Disallow every crawler (search engines, LLM training bots) from every path.
+#
+# This site is a take-home prototype shared via a private link, not a public
+# product. We don't want it surfacing in Google, getting scraped into
+# training corpora, or otherwise advertised.
+#
+# Note: robots.txt is a politeness signal — well-behaved bots honor it,
+# malicious ones ignore it. Real protection lives in:
+#   - Anthropic spend cap (outermost guard against cost abuse)
+#   - Origin allowlist on /api/chat + admin POST routes (lib/security/origin.ts)
+#   - Per-message / per-conversation size caps (lib/security/limits.ts)
+#
+# When this becomes a real product: change `Disallow: /` to `Allow: /` (or
+# delete this file) to opt back into indexing.
+
 User-agent: *
 Disallow: /

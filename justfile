@@ -100,6 +100,33 @@ seed:
 seed-questions:
     bun run scripts/seed-questions.ts
 
+# DESTRUCTIVE: wipe handbook_sections, versions, and questions, then reseed both
+reset:
+    #!/usr/bin/env bash
+    set -eo pipefail
+    echo
+    echo "  This will DELETE every row from:"
+    echo "    • handbook_sections (including any merged from /admin/gaps)"
+    echo "    • handbook_section_versions"
+    echo "    • questions (seeded and real)"
+    echo
+    printf "  Proceed? [y/N] "
+    read -r yn
+    case "$yn" in
+      y|Y|yes|YES)
+        echo
+        bun run scripts/reset-db.ts
+        echo
+        just seed
+        echo
+        just seed-questions
+        ;;
+      *)
+        echo "aborted"
+        exit 1
+        ;;
+    esac
+
 # ──────────────────────────────────────────────────────────────────────────────
 # vercel
 # ──────────────────────────────────────────────────────────────────────────────
