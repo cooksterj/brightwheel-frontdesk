@@ -104,7 +104,7 @@ export async function GET(_req: NextRequest) {
           topic: "couldn't draft",
           proposedTitle: "Draft unavailable",
           proposedBody:
-            "Claude couldn't draft a section for this cluster right now. Try again or write one by hand.",
+            "Couldn't draft a section for this cluster right now. Try again or write one by hand.",
         };
       }
       return {

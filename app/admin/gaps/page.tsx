@@ -11,7 +11,7 @@ export default function GapsPage() {
         </h1>
         <p className="mt-2 max-w-[68ch] font-sans text-[14px] text-ink-soft">
           Parent questions the chat couldn't answer confidently, clustered by
-          topic. Each cluster gets a Claude-drafted handbook section you can
+          topic. Each cluster comes with a drafted handbook section you can
           edit and merge in one click.
         </p>
       </div>
