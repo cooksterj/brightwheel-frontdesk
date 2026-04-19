@@ -33,12 +33,16 @@ export async function GET(_req: NextRequest) {
     { auth: { persistSession: false } },
   );
 
+  // Exclude emergency + tour — those aren't handbook gaps (one is safety,
+  // the other is a lead). Keep rows where intent is null (pre-phase-7 data)
+  // or explicitly illness/general.
   const { data, error } = await supabase
     .from("questions")
     .select(
-      "id, query, query_embedding, confidence, top_similarity, created_at",
+      "id, query, query_embedding, confidence, top_similarity, created_at, intent",
     )
     .in("confidence", ["medium", "low"])
+    .or("intent.is.null,intent.in.(illness,general)")
     .is("resolved_at", null)
     .not("query_embedding", "is", null)
     .order("created_at", { ascending: false })

@@ -1,17 +1,33 @@
 import type Anthropic from "@anthropic-ai/sdk";
 import type { Message } from "@/lib/chat/types";
+import type { Intent } from "./classify-intent";
 import type { RetrievedSection } from "./retrieve";
 
 export const DEFAULT_MODEL = "claude-sonnet-4-6";
 export const DEFAULT_MAX_TOKENS = 700;
+
+const INTENT_GUIDANCE: Record<Intent, string> = {
+  emergency: "",
+  illness:
+    "\nThis message is about a sick child. After citing the relevant handbook section, add a brief close: \"If this is happening at school, please also let your child's teacher know directly so they can start a symptom log and keep other families informed if it's contagious.\"",
+  tour:
+    "\nThis message is about visiting or enrolling. Quote the tour availability from the handbook, then close with: \"If you'd like, reply with your child's age and a preferred day/time and I'll pass it to Maria.\"",
+  general: "",
+};
 
 /**
  * Compose the system prompt: product voice + retrieval context + citation
  * rules. The handbook sections are included verbatim; Claude is instructed
  * to ground answers only in this context and to append a `[§ Section Title]`
  * marker after factual claims.
+ *
+ * An optional `intent` appends a closing instruction that tailors the answer
+ * (e.g. an illness reminder to also notify the teacher, or a tour CTA).
  */
-export function buildSystemPrompt(sections: RetrievedSection[]): string {
+export function buildSystemPrompt(
+  sections: RetrievedSection[],
+  intent: Intent = "general",
+): string {
   const context = sections
     .map((s) => `### § ${s.title}\n\n${s.body}`)
     .join("\n\n---\n\n");
@@ -31,13 +47,17 @@ export function buildSystemPrompt(sections: RetrievedSection[]): string {
     sections.length === 0
       ? "No handbook sections were retrieved for this question."
       : "Relevant handbook sections:\n\n" + context,
-  ].join("\n");
+    INTENT_GUIDANCE[intent],
+  ]
+    .filter(Boolean)
+    .join("\n");
 }
 
 export interface StreamAnswerOptions {
   client: Anthropic;
   messages: Message[];
   sections: RetrievedSection[];
+  intent?: Intent;
   model?: string;
   maxTokens?: number;
 }
@@ -51,7 +71,7 @@ export async function* streamAnswer(
   opts: StreamAnswerOptions,
 ): AsyncGenerator<string> {
   const { client, messages, sections } = opts;
-  const system = buildSystemPrompt(sections);
+  const system = buildSystemPrompt(sections, opts.intent ?? "general");
 
   const convo = messages
     .filter((m) => m.content.trim().length > 0)

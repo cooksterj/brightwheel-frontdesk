@@ -1,23 +1,26 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Intent } from "./classify-intent";
 import { computeConfidence, type Confidence } from "./confidence";
 import type { RetrievedSection } from "./retrieve";
 
 export interface LogQuestionArgs {
   query: string;
-  queryEmbedding: number[];
+  queryEmbedding: number[] | null;
   answer: string;
   sections: RetrievedSection[];
   sessionId?: string | null;
+  intent?: Intent | null;
 }
 
 export interface LoggedRow {
   query: string;
-  query_embedding: number[];
+  query_embedding: number[] | null;
   answer: string;
   retrieved_slugs: string[];
   top_similarity: number | null;
   confidence: Confidence;
   session_id: string | null;
+  intent: Intent | null;
 }
 
 export function buildQuestionRow(args: LogQuestionArgs): LoggedRow {
@@ -30,6 +33,7 @@ export function buildQuestionRow(args: LogQuestionArgs): LoggedRow {
     top_similarity: topSimilarity,
     confidence: computeConfidence(topSimilarity),
     session_id: args.sessionId ?? null,
+    intent: args.intent ?? null,
   };
 }
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { extractJson } from "./propose-section";
+import { extractJsonObject as extractJson } from "./json";
 
-describe("extractJson", () => {
+describe("extractJsonObject", () => {
   it("parses a bare JSON object", () => {
     expect(
       extractJson('{"topic":"summer","proposedTitle":"Summer","proposedBody":"…"}'),

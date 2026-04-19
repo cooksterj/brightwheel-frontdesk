@@ -1,4 +1,5 @@
 import type Anthropic from "@anthropic-ai/sdk";
+import { extractJsonObject } from "./json";
 
 export interface ProposedSection {
   topic: string;
@@ -62,7 +63,7 @@ export async function proposeSection(
     .map((block) => (block as { type: "text"; text: string }).text)
     .join("");
 
-  const parsed = extractJson(text);
+  const parsed = extractJsonObject(text);
   if (!parsed) {
     throw new Error("proposeSection: no JSON object in Claude response");
   }
@@ -72,25 +73,4 @@ export async function proposeSection(
       String(parsed.proposedTitle ?? "").trim().slice(0, 200) || "Untitled",
     proposedBody: String(parsed.proposedBody ?? "").trim().slice(0, 5000),
   };
-}
-
-export function extractJson(text: string): Record<string, unknown> | null {
-  const trimmed = text.trim();
-  try {
-    const direct = JSON.parse(trimmed);
-    return isObject(direct) ? direct : null;
-  } catch {}
-  // Fall back to locating a {...} block, tolerant of surrounding prose.
-  const match = trimmed.match(/\{[\s\S]*\}/);
-  if (!match) return null;
-  try {
-    const parsed = JSON.parse(match[0]);
-    return isObject(parsed) ? parsed : null;
-  } catch {
-    return null;
-  }
-}
-
-function isObject(v: unknown): v is Record<string, unknown> {
-  return typeof v === "object" && v !== null && !Array.isArray(v);
 }

@@ -30,4 +30,20 @@ describe("buildSystemPrompt", () => {
     const prompt = buildSystemPrompt([]);
     expect(prompt).toMatch(/No handbook sections were retrieved/i);
   });
+
+  it("appends illness guidance when intent=illness", () => {
+    const prompt = buildSystemPrompt([section], "illness");
+    expect(prompt).toMatch(/symptom log/i);
+  });
+
+  it("appends tour CTA when intent=tour", () => {
+    const prompt = buildSystemPrompt([section], "tour");
+    expect(prompt).toMatch(/pass it to Maria/i);
+  });
+
+  it("adds no tailoring for general intent", () => {
+    const baseline = buildSystemPrompt([section]);
+    const general = buildSystemPrompt([section], "general");
+    expect(general).toBe(baseline);
+  });
 });
