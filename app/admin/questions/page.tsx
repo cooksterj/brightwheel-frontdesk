@@ -52,6 +52,51 @@ export default async function QuestionsPage({
           </Link>
           .
         </p>
+        <p className="mt-3 max-w-[72ch] font-sans text-[13px] leading-[1.55] text-ink-mute">
+          <span className="font-medium text-ink-soft">Confidence</span> is how
+          well the retrieved handbook sections matched the question at ask
+          time.{" "}
+          <span className="font-medium text-ink-soft">high</span> = the right
+          section, clearly;{" "}
+          <span className="font-medium text-ink-soft">medium</span> = partial
+          match (right topic, maybe wrong angle);{" "}
+          <span className="font-medium text-ink-soft">low</span> = retrieval
+          likely missed and the answer was hedged or deferred.
+        </p>
+        <p className="mt-2 max-w-[72ch] font-sans text-[13px] leading-[1.55] text-ink-mute">
+          <span className="font-medium text-ink-soft">Intent</span> is how each
+          question was routed before the answer was generated:{" "}
+          <span className="font-medium text-ink-soft">emergency</span> (canned
+          911 response, no handbook lookup),{" "}
+          <span className="font-medium text-ink-soft">illness</span> (handbook
+          answer plus a notify-teacher reminder),{" "}
+          <span className="font-medium text-ink-soft">tour</span> (handbook
+          answer plus a lead-capture prompt),{" "}
+          <span className="font-medium text-ink-soft">general</span> (the
+          default path, plain handbook answer). Blank means the row is seed
+          data and bypassed the classifier.
+        </p>
+        <p className="mt-2 max-w-[72ch] font-sans text-[13px] leading-[1.55] text-ink-mute">
+          <span className="font-medium text-ink-soft">Cited</span> lists the
+          handbook slugs retrieved for this question (top 5 by similarity).
+          It's what the model had available, not necessarily what appeared in
+          the final answer.
+        </p>
+        <p className="mt-2 max-w-[72ch] font-sans text-[13px] leading-[1.55] text-ink-mute">
+          <span className="font-medium text-ink-soft">Status</span> tracks
+          whether an operator has closed the gap this question surfaced.{" "}
+          <span className="font-medium text-ink-soft">open</span> means no
+          action taken yet (normal for high-confidence questions).{" "}
+          <span className="font-medium text-ink-soft">✓ resolved</span> means
+          this question was part of a cluster merged into the handbook on{" "}
+          <Link
+            href="/admin/gaps"
+            className="text-clay underline-offset-2 hover:text-clay-deep hover:underline"
+          >
+            knowledge gaps
+          </Link>
+          , so the next parent asking similarly will get a confident answer.
+        </p>
       </div>
 
       <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-sans text-[12px] uppercase tracking-[0.22em] text-ink-mute">
